@@ -1,0 +1,81 @@
+version: '3'
+#
+#env:
+#  GREETING: Hey, there!
+#
+vars:
+  APP_NAME: geo
+  VERSION:
+    sh: git cliff --bumped-version
+  BUMPED_VERSION:
+    sh: git cliff --bumped-version
+  GIT_BRANCH:
+    sh: git rev-parse --abbrev-ref HEAD
+  MAIN_PATH: .
+  BINARY_NAME: geo
+  BINARY_UNIX: '{{.BINARY_NAME}}_unix'
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+    desc: List available tasks (default for undefined tasks)
+  build:
+    desc: Building Binary
+    cmds:
+      - go build -ldflags "-X main.version={{.VERSION}}" -o dist/{{.BINARY_NAME}} -v {{.MAIN_PATH}}
+      - cp dist/{{.BINARY_NAME}} {{.BINARY_NAME}}
+  test:
+    desc: Run Tests
+    cmds:
+      - go test ./...
+  changelog:
+    aliases:
+      - cl
+    desc: Untagged Release Changelog
+    silent: true
+    cmds:
+      - git cliff -u | glow
+
+#___
+  check-staged-changes:
+    silent: true
+    cmds:
+      - |
+        if git diff --cached --quiet; then
+          echo "No staged changes."
+        else
+          echo "Error: There are staged changes. Please commit or stash them before bumping the version."
+          exit 1
+        fi
+  check-bumped-version:
+    silent: true
+    cmd: |
+      if echo "{{.BUMPED_VERSION}}" | grep -q "There is nothing to bump"; then
+        echo "ERROR"
+      else
+        echo "{{.BUMPED_VERSION}}"
+      fi
+  bump-patch-version:
+    cmds:
+      - echo [New version is] {{.BUMPED_VERSION}}
+      - git cliff -o CHANGELOG.md --bump
+      - echo {{.BUMPED_VERSION}} > VERSION
+      - |
+        git commit -am "chore: bump version to {{.BUMPED_VERSION}}"
+  tag-and-push-new-version:
+    vars:
+      CL:
+        sh: git cliff -u
+    cmds:
+      - git tag {{.BUMPED_VERSION}}
+      - git push origin {{.BUMPED_VERSION}}
+      - gh release create {{.BUMPED_VERSION}} --notes "{{.CL}}"
+  bump:
+#    silent: true
+    cmds:
+      - task: check-bumped-version
+      - task: changelog
+      - task: bump-patch-version
+      - task: tag-and-push-new-version
