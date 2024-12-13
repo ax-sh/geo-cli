@@ -64,12 +64,15 @@ tasks:
       - echo {{.BUMPED_VERSION}} > VERSION
       - |
         git commit -am "chore: bump version to {{.BUMPED_VERSION}}"
+  tag-version:
+    cmds:
+      - git tag {{.BUMPED_VERSION}}
   tag-and-push-new-version:
     vars:
       CL:
         sh: git cliff -u
     cmds:
-      - git tag {{.BUMPED_VERSION}}
+      - task: tag-version
       - git push origin {{.BUMPED_VERSION}}
       - gh release create {{.BUMPED_VERSION}} --notes "{{.CL}}"
   bump:
