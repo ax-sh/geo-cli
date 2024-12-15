@@ -4,18 +4,24 @@ import (
 	"fmt"
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 	"log"
 )
+
+var baseStyle = lipgloss.NewStyle().
+	BorderStyle(lipgloss.NormalBorder()).
+	BorderForeground(lipgloss.Color("240"))
 
 type (
 	errMsg error
 )
 type model struct {
 	textInput textinput.Model
+	callback  func(input string) string
 	err       error
 }
 
-func initialModel() model {
+func initialModel(callback func(input string) string) model {
 	ti := textinput.New()
 	ti.Placeholder = "Phone"
 	ti.Focus()
@@ -25,6 +31,7 @@ func initialModel() model {
 	return model{
 		textInput: ti,
 		err:       nil,
+		callback:  callback,
 	}
 }
 func (m model) Init() tea.Cmd {
@@ -35,7 +42,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		
+
 		switch msg.Type {
 		case tea.KeyEnter, tea.KeyCtrlC, tea.KeyEsc:
 			return m, tea.Quit
@@ -46,21 +53,28 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.err = msg
 		return m, nil
 	}
+	m.callback(m.textInput.Value())
 
 	m.textInput, cmd = m.textInput.Update(msg)
 	return m, cmd
 }
 
 func (m model) View() string {
+	input := m.textInput.View()
+	tableString := m.callback(m.textInput.Value())
+	helpText := "Type to filter | q/ctrl+c to quit"
+	label := "Enter country code for country?"
 	return fmt.Sprintf(
-		"What’s your favorite Pokémon?\n\n%s\n\n%s",
-		m.textInput.View(),
-		"(esc to quit)",
-	) + "\n"
+		"%s\n\n%s\n\n%s \n\n%s",
+		baseStyle.Render(label),
+		input,
+		helpText,
+		tableString,
+	)
 }
 
-func FilterPhone() {
-	p := tea.NewProgram(initialModel())
+func FilterPhone(callback func(input string) string) {
+	p := tea.NewProgram(initialModel(callback))
 	if _, err := p.Run(); err != nil {
 		log.Fatal(err)
 	}
