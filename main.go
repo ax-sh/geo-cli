@@ -11,6 +11,9 @@ var version string
 
 func main() {
 	tui.FilterPhone(func(countryCode string) string {
+		if len(countryCode) == 0 {
+			return ""
+		}
 		fil := country.FilterCountryByCountryCodeDataFrame(countryCode)
 		sel := fil.Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).Drop("Area(in sq km)")
 		result := tui.PrintDataframe(sel)
