@@ -65,13 +65,6 @@ func TestCountryTsv(t *testing.T) {
 	//fmt.Println(df.String())
 }
 
-func TestTsv(t *testing.T) {
-	// Using with a string reader
-	csvString := "ISO\tISO3\tISO-Numeric\tfips\tCountry\tCapital\tArea(in sq km)\tPopulation\tContinent\ttld\tCurrencyCode\tCurrencyName\tPhone\tPostal Code Format\tPostal Code Regex\tLanguages\tgeonameid\tneighbours\tEquivalentFipsCode\nAD\tAND\t020\tAN\tAndorra\tAndorra la Vella\t468\t77006\tEU\t.ad\tEUR\tEuro\t376\tAD###\t^(?:AD)*(\\d{3})$\tca\t3041565\tES,FR"
-	df := dataframe.ReadCSV(strings.NewReader(csvString))
-	fmt.Println("TestTsv", df)
-
-}
 func TestFilterPhone(t *testing.T) {
 	result := FilterCountryByCountryCode("41")
 	for _, name := range result.Array() {
@@ -79,9 +72,4 @@ func TestFilterPhone(t *testing.T) {
 
 	}
 
-	//PrintJSONTable(rows)
-	//
-	//pp.Println(result.Value())
-	//
-	//fmt.Println(len(value.Array()), "$$$$<<<")
 }
