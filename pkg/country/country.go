@@ -5,13 +5,13 @@ import (
 	"bytes"
 	"encoding/csv"
 	"fmt"
+	"github.com/charmbracelet/lipgloss"
+	"github.com/charmbracelet/lipgloss/table"
 	"github.com/go-gota/gota/dataframe"
 	"github.com/go-gota/gota/series"
 	"github.com/pkg/errors"
 	"github.com/tidwall/gjson"
 	"io"
-	"strings"
-
 	"log"
 	"os"
 )
@@ -42,6 +42,7 @@ func padRowToLength(row []string, targetLength int) []string {
 
 func ReadCountryAsDataFrame() dataframe.DataFrame {
 	csv := LoadTsvFileAsCsv("countryInfo.tsv")
+
 	records := make([][]string, 0)
 	for {
 		row, err := csv.Read()
@@ -58,11 +59,7 @@ func ReadCountryAsDataFrame() dataframe.DataFrame {
 			row = padRowToLength(row, maxLength)
 		}
 
-		//if length < 18 {
-		//
-		//} else {
 		records = append(records, row)
-		//}
 
 	}
 	return dataframe.LoadRecords(records)
@@ -148,42 +145,45 @@ func FilterCountryByCountryCode(countryCode string) gjson.Result {
 	}
 	json := buf.String()
 	result := gjson.Parse(json)
-	//gjson.ForEachLine(json, func(line gjson.Result) bool {
-	//	fmt.Println("999999", line.String())
-	//	//println(line.String())
-	//	return true
-	//})
 
 	return result
 }
 
-func PrintJSONTable(jsonStr string) {
-	// Parse the JSON
-	results := gjson.Parse(jsonStr)
+func PrintJSONTable(rows [][]string) {
 
-	// Ensure it's an array
-	if !results.IsArray() {
-		fmt.Println("Input must be a JSON array")
-		return
-	}
-
-	// Extract keys from the first object
-	keys := []string{}
-	results.Get("0").ForEach(func(key, value gjson.Result) bool {
-		keys = append(keys, key.String())
-		return true
-	})
-
-	// Print headers
-	fmt.Println(strings.Join(keys, "\t"))
-
-	// Print rows
-	results.ForEach(func(_, obj gjson.Result) bool {
-		row := []string{}
-		for _, key := range keys {
-			row = append(row, obj.Get(key).String())
-		}
-		fmt.Println(strings.Join(row, "\t"))
-		return true
-	})
+	t := table.New().
+		Border(lipgloss.NormalBorder()).
+		BorderStyle(lipgloss.NewStyle().Foreground(lipgloss.Color("99"))).
+		Headers("LANGUAGE", "FORMAL", "INFORMAL").
+		Rows(rows...)
+	t.Row("English", "You look absolutely fabulous.", "How's it going?")
+	fmt.Println(t)
+	//// Parse the JSON
+	//results := gjson.Parse(jsonStr)
+	//
+	//// Ensure it's an array
+	//if !results.IsArray() {
+	//	fmt.Println("Input must be a JSON array")
+	//	return
+	//}
+	//
+	//// Extract keys from the first object
+	//keys := []string{}
+	//results.Get("0").ForEach(func(key, value gjson.Result) bool {
+	//	keys = append(keys, key.String())
+	//	return true
+	//})
+	//
+	//// Print headers
+	//fmt.Println(strings.Join(keys, "\t"))
+	//
+	//// Print rows
+	//results.ForEach(func(_, obj gjson.Result) bool {
+	//	row := []string{}
+	//	for _, key := range keys {
+	//		row = append(row, obj.Get(key).String())
+	//	}
+	//	fmt.Println(strings.Join(row, "\t"))
+	//	return true
+	//})
 }

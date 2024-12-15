@@ -3,7 +3,6 @@ package country
 import (
 	"fmt"
 	"github.com/go-gota/gota/dataframe"
-	"github.com/k0kubun/pp/v3"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"os"
@@ -76,12 +75,13 @@ func TestTsv(t *testing.T) {
 func TestFilterPhone(t *testing.T) {
 	result := FilterCountryByCountryCode("41")
 	for _, name := range result.Array() {
-
 		fmt.Println(name.Get("Phone"), "222")
-	}
-	PrintJSONTable(result.String())
 
-	pp.Println(result.Value())
+	}
+
+	//PrintJSONTable(rows)
+	//
+	//pp.Println(result.Value())
 	//
 	//fmt.Println(len(value.Array()), "$$$$<<<")
 }
