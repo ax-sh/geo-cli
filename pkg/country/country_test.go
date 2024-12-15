@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/go-gota/gota/dataframe"
 	"github.com/stretchr/testify/assert"
+	"log"
+	"os"
 	"strings"
 	"testing"
 )
@@ -31,6 +33,30 @@ Spain,2012-02-01,66,555.42,00241
 func TestCountryJson(t *testing.T) {
 	df := LoadCountryDataFrame()
 	fmt.Println("[[[TestCountryJson]]]", df)
+}
+
+func TestCountryTsv(t *testing.T) {
+	file, err := os.Open("countryInfo.tsv")
+
+	if err != nil {
+		log.Fatal("Error: LoadCountryDataFrame", err)
+	}
+	df := dataframe.ReadCSV(file,
+		dataframe.HasHeader(true),
+		dataframe.WithComments('#'),
+		dataframe.NaNValues([]string{""}),
+		dataframe.Names("D"),
+	)
+
+	//
+	//// Basic DataFrame operations
+	//fmt.Println("DataFrame Shape:", df.Dims())
+	fmt.Println("Column Names:", df.Names())
+
+	//// Print first few rows
+	sub := df.Subset([]int{0, 2})
+	fmt.Println("Subset:", sub)
+	//fmt.Println(df.String())
 }
 
 func TestTsv(t *testing.T) {
