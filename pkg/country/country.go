@@ -2,11 +2,15 @@ package country
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/csv"
 	"fmt"
 	"github.com/go-gota/gota/dataframe"
+	"github.com/go-gota/gota/series"
 	"github.com/pkg/errors"
+	"github.com/tidwall/gjson"
 	"io"
+	"strings"
 
 	"log"
 	"os"
@@ -26,6 +30,16 @@ func LoadTsvFileAsCsv(filePath string) *csv.Reader {
 
 	return csvReader
 }
+
+// Pad row to a specific length by adding empty strings
+func padRowToLength(row []string, targetLength int) []string {
+	// Continue adding empty strings until desired length is reached
+	for len(row) < targetLength {
+		row = append(row, "")
+	}
+	return row
+}
+
 func ReadCountryAsDataFrame() dataframe.DataFrame {
 	csv := LoadTsvFileAsCsv("countryInfo.tsv")
 	records := make([][]string, 0)
@@ -39,12 +53,17 @@ func ReadCountryAsDataFrame() dataframe.DataFrame {
 			continue
 		}
 		length := len(row)
-
-		if length != 18 {
-			continue
+		maxLength := 19
+		if length < maxLength {
+			row = padRowToLength(row, maxLength)
 		}
 
+		//if length < 18 {
+		//
+		//} else {
 		records = append(records, row)
+		//}
+
 	}
 	return dataframe.LoadRecords(records)
 }
@@ -104,9 +123,67 @@ func ProcessCountryData() {
 func LoadCountryDataFrame() dataframe.DataFrame {
 	df := ReadCountryAsDataFrame()
 
-	sub := df.Subset([]int{0, 2})
+	//fil := df.Filter(dataframe.F{Colidx: 0, Colname: "Phone", Comparator: series.Eq, Comparando: "41"})
+	//fmt.Printf(">>>>Loading country data: %v\n", fil)
 
-	fmt.Println(sub.String())
-	fmt.Println((df.Names()))
-	return dataframe.DataFrame{}
+	sub := df.Subset([]int{0, 2})
+	////
+	//fmt.Println(sub.String())
+	//fmt.Println((df.Names()))
+	return sub
+}
+func FilterCountryByCountryCodeDataFrame(countryCode string) dataframe.DataFrame {
+	df := ReadCountryAsDataFrame()
+
+	fil := df.Filter(dataframe.F{Colname: "Phone", Comparator: series.Eq, Comparando: countryCode})
+	return fil
+}
+
+func FilterCountryByCountryCode(countryCode string) gjson.Result {
+	fil := FilterCountryByCountryCodeDataFrame(countryCode)
+	buf := new(bytes.Buffer)
+	err := fil.WriteJSON(buf)
+	if err != nil {
+		log.Printf("Expected success, got error: %v", err)
+	}
+	json := buf.String()
+	result := gjson.Parse(json)
+	//gjson.ForEachLine(json, func(line gjson.Result) bool {
+	//	fmt.Println("999999", line.String())
+	//	//println(line.String())
+	//	return true
+	//})
+
+	return result
+}
+
+func PrintJSONTable(jsonStr string) {
+	// Parse the JSON
+	results := gjson.Parse(jsonStr)
+
+	// Ensure it's an array
+	if !results.IsArray() {
+		fmt.Println("Input must be a JSON array")
+		return
+	}
+
+	// Extract keys from the first object
+	keys := []string{}
+	results.Get("0").ForEach(func(key, value gjson.Result) bool {
+		keys = append(keys, key.String())
+		return true
+	})
+
+	// Print headers
+	fmt.Println(strings.Join(keys, "\t"))
+
+	// Print rows
+	results.ForEach(func(_, obj gjson.Result) bool {
+		row := []string{}
+		for _, key := range keys {
+			row = append(row, obj.Get(key).String())
+		}
+		fmt.Println(strings.Join(row, "\t"))
+		return true
+	})
 }

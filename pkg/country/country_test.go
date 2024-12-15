@@ -3,6 +3,7 @@ package country
 import (
 	"fmt"
 	"github.com/go-gota/gota/dataframe"
+	"github.com/k0kubun/pp/v3"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"os"
@@ -35,6 +36,12 @@ func TestCountryJson(t *testing.T) {
 	fmt.Println("[[[TestCountryJson]]]", df)
 }
 
+func TestCountryRows(t *testing.T) {
+	df := ReadCountryAsDataFrame()
+	length := len(df.Records())
+	assert.Equal(t, 253, length)
+}
+
 func TestCountryTsv(t *testing.T) {
 	file, err := os.Open("countryInfo.tsv")
 
@@ -64,25 +71,17 @@ func TestTsv(t *testing.T) {
 	csvString := "ISO\tISO3\tISO-Numeric\tfips\tCountry\tCapital\tArea(in sq km)\tPopulation\tContinent\ttld\tCurrencyCode\tCurrencyName\tPhone\tPostal Code Format\tPostal Code Regex\tLanguages\tgeonameid\tneighbours\tEquivalentFipsCode\nAD\tAND\t020\tAN\tAndorra\tAndorra la Vella\t468\t77006\tEU\t.ad\tEUR\tEuro\t376\tAD###\t^(?:AD)*(\\d{3})$\tca\t3041565\tES,FR"
 	df := dataframe.ReadCSV(strings.NewReader(csvString))
 	fmt.Println("TestTsv", df)
-}
 
-//func TestAdd(t *testing.T) {
-//	assert.Equal(t, 123, 123, "they should be equal")
-//	//testCases := []struct {
-//	//	a        int
-//	//	b        int
-//	//	expected int
-//	//}{
-//	//	{2, 3, 5},
-//	//	{-1, -1, -2},
-//	//	{0, 0, 0},
-//	//	{100, 200, 300},
-//	//}
-//	//
-//	//for _, tc := range testCases {
-//	//	result := Add(tc.a, tc.b)
-//	//	if result != tc.expected {
-//	//		t.Errorf("Add(%d, %d) = %d; want %d", tc.a, tc.b, result, tc.expected)
-//	//	}
-//	//}
-//}
+}
+func TestFilterPhone(t *testing.T) {
+	result := FilterCountryByCountryCode("41")
+	for _, name := range result.Array() {
+
+		fmt.Println(name.Get("Phone"), "222")
+	}
+	PrintJSONTable(result.String())
+
+	pp.Println(result.Value())
+	//
+	//fmt.Println(len(value.Array()), "$$$$<<<")
+}
