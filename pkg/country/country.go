@@ -3,10 +3,9 @@ package country
 import (
 	"bufio"
 	"bytes"
+	_ "embed"
 	"encoding/csv"
 	"fmt"
-	"github.com/charmbracelet/lipgloss"
-	"github.com/charmbracelet/lipgloss/table"
 	"github.com/go-gota/gota/dataframe"
 	"github.com/go-gota/gota/series"
 	"github.com/pkg/errors"
@@ -14,15 +13,16 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 )
 
-func LoadTsvFileAsCsv(filePath string) *csv.Reader {
-	file, err := os.Open(filePath)
+//go:embed countryInfo.tsv
+var countryInfo string
 
-	if err != nil {
-		log.Fatal("Error: LoadCountryDataFrame", err)
-	}
-	csvReader := csv.NewReader(file)
+func LoadTsvFileAsCsv() *csv.Reader {
+	// Create a string reader from the embedded file contents
+	reader := strings.NewReader(countryInfo)
+	csvReader := csv.NewReader(reader)
 
 	csvReader.Comma = '\t'
 	csvReader.Comment = '#'
@@ -41,7 +41,7 @@ func padRowToLength(row []string, targetLength int) []string {
 }
 
 func ReadCountryAsDataFrame() dataframe.DataFrame {
-	csv := LoadTsvFileAsCsv("countryInfo.tsv")
+	csv := LoadTsvFileAsCsv()
 
 	records := make([][]string, 0)
 	for {
@@ -147,43 +147,4 @@ func FilterCountryByCountryCode(countryCode string) gjson.Result {
 	result := gjson.Parse(json)
 
 	return result
-}
-
-func PrintJSONTable(rows [][]string) {
-
-	t := table.New().
-		Border(lipgloss.NormalBorder()).
-		BorderStyle(lipgloss.NewStyle().Foreground(lipgloss.Color("99"))).
-		Headers("LANGUAGE", "FORMAL", "INFORMAL").
-		Rows(rows...)
-	t.Row("English", "You look absolutely fabulous.", "How's it going?")
-	fmt.Println(t)
-	//// Parse the JSON
-	//results := gjson.Parse(jsonStr)
-	//
-	//// Ensure it's an array
-	//if !results.IsArray() {
-	//	fmt.Println("Input must be a JSON array")
-	//	return
-	//}
-	//
-	//// Extract keys from the first object
-	//keys := []string{}
-	//results.Get("0").ForEach(func(key, value gjson.Result) bool {
-	//	keys = append(keys, key.String())
-	//	return true
-	//})
-	//
-	//// Print headers
-	//fmt.Println(strings.Join(keys, "\t"))
-	//
-	//// Print rows
-	//results.ForEach(func(_, obj gjson.Result) bool {
-	//	row := []string{}
-	//	for _, key := range keys {
-	//		row = append(row, obj.Get(key).String())
-	//	}
-	//	fmt.Println(strings.Join(row, "\t"))
-	//	return true
-	//})
 }
