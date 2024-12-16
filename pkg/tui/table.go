@@ -7,9 +7,9 @@ import (
 )
 
 var (
-	HeaderStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("99"))
-	EvenRowStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("242"))
-	OddRowStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("242"))
+	HeaderStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#7CF143"))
+	EvenRowStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#FC318A"))
+	OddRowStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#B13CC9"))
 )
 
 // PrintDataframe printable pretty tui
@@ -18,14 +18,16 @@ func PrintDataframe(df dataframe.DataFrame) *table.Table {
 		Border(lipgloss.NormalBorder()).
 		BorderStyle(lipgloss.NewStyle().Foreground(lipgloss.Color("99"))).
 		StyleFunc(func(row, col int) lipgloss.Style {
+			var style lipgloss.Style
 			switch {
-			case row == 0:
+			case row == table.HeaderRow:
 				return HeaderStyle
 			case row%2 == 0:
-				return EvenRowStyle
+				style = EvenRowStyle
 			default:
-				return OddRowStyle
+				style = OddRowStyle
 			}
+			return style
 		}).
 		Headers(df.Names()...).
 		Rows(df.Records()[1:]...)
