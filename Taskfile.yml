@@ -67,12 +67,11 @@ tasks:
   tag-version:
     cmds:
       - git tag {{.BUMPED_VERSION}}
-  tag-and-push-new-version:
+  push-new-version:
     vars:
       CL:
         sh: git cliff -u
     cmds:
-      - task: tag-version
       - git push origin {{.BUMPED_VERSION}}
       - gh release create {{.BUMPED_VERSION}} --notes "{{.CL}}"
   bump:
@@ -81,4 +80,5 @@ tasks:
       - task: check-bumped-version
       - task: changelog
       - task: bump-patch-version
-      - task: tag-and-push-new-version
+      - task: tag-version
+#      - task: tag-and-push-new-version

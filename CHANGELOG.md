@@ -6,6 +6,7 @@
 - Add tagging task to Taskfile.yml ([d610f69](../../commit/d610f6936ee2cda9c441536c2c015122c58d21e1))
 - Add clipboard dependency and refactor main.go ([3b5d247](../../commit/3b5d247308656743f97be445d76c36cce88dfd0a))
 - Bump version to 0.1.0 ([fb1f6d4](../../commit/fb1f6d4203bfc6b35fb71cb8493131304595b747))
+- Bump version to 0.1.0 ([3f39814](../../commit/3f398146b0afd1a1df4113b1afad12329f87b3f4))
 
 
 ### Build
