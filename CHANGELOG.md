@@ -1,8 +1,19 @@
 
+## v1.1.0 [2024-12-16]
+
+### Chore
+- Update task configuration and add silent cmd ([2adedcd](../../commit/2adedcd9c36be470ac82ac53b1c5a61959af9fe3))
+
+
+### Features
+- Add silent version command for git cliff ([372364b](../../commit/372364bdd207ec20e8e082dc27cbeebd42d46d34))
+
+
 ## v1.0.1 [2024-12-16]
 
 ### Chore
 - Bump version to v1.0.0 ([2337e3d](../../commit/2337e3d425120a55051fe2ba4750394ef5e21305))
+- Bump version to v1.0.1 ([2c4d385](../../commit/2c4d3858072f471816ff12f811c355b92bcdc05a))
 
 
 ## v1.0.0 [2024-12-16]
