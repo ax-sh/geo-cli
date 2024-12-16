@@ -1,8 +1,15 @@
 
+## v1.1.1 [2024-12-16]
+
+### Style
+- Update color styles for table headers and rows ([acda9c7](../../commit/acda9c75772249a72b98b937b5efe97528b55760))
+
+
 ## v1.1.0 [2024-12-16]
 
 ### Chore
 - Update task configuration and add silent cmd ([2adedcd](../../commit/2adedcd9c36be470ac82ac53b1c5a61959af9fe3))
+- Bump version to v1.1.0 ([91ab289](../../commit/91ab2893b0b4923e617309facc0bd30ee9654def))
 
 
 ### Features
