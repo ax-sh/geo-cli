@@ -1,5 +1,15 @@
 
+## v1.3.0 [2024-12-16]
+
+### Features
+- Add tld command to filter countries by TLD code ([8acf757](../../commit/8acf757c69e5bfa74ebf1cc14559e3bb0ace8337))
+
+
 ## v1.2.0 [2024-12-16]
+
+### Chore
+- Bump version to v1.2.0 ([f19c091](../../commit/f19c091f22f02b9faa83941617b6572cc5e859df))
+
 
 ### Features
 - Add color package with styles and constants ([ee5b6ae](../../commit/ee5b6ae91e52fb2190241224a2cb020116a4a766))
