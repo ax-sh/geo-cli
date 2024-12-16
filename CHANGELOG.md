@@ -1,5 +1,15 @@
 
+## v1.3.1 [2024-12-16]
+
+### Refactor
+- Streamline DataFrame column management ([e2fbf9a](../../commit/e2fbf9ace42a4d29db4a4d73259d075028612e1d))
+
+
 ## v1.3.0 [2024-12-16]
+
+### Chore
+- Bump version to v1.3.0 ([647b2a1](../../commit/647b2a1b49478875cd3d34f1d3369e4184327fb1))
+
 
 ### Features
 - Add tld command to filter countries by TLD code ([8acf757](../../commit/8acf757c69e5bfa74ebf1cc14559e3bb0ace8337))
