@@ -59,6 +59,7 @@ tasks:
       fi
   bump-patch-version:
     desc: Bumping version
+    silent: true
     cmds:
       - echo [Bumping version tt] {{.BUMPED_VERSION}}
       - git cliff -o CHANGELOG.md --bump
