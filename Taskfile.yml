@@ -69,12 +69,13 @@ tasks:
   tag-version:
     cmds:
       - git tag {{.BUMPED_VERSION}}
-  push-new-version:
+  push-tag-version:
+    cmd: git push origin {{.BUMPED_VERSION}}
+  create-github-release:
     vars:
       CL:
         sh: git cliff -u
     cmds:
-      - git push origin {{.BUMPED_VERSION}}
       - gh release create {{.BUMPED_VERSION}} --notes "{{.CL}}"
   version:
     silent: true
@@ -86,7 +87,8 @@ tasks:
       - task: changelog
       - task: bump-patch-version
       - task: tag-version
-#      - task: push-new-version
+      - task: push-tag-version
+      - task: create-github-release
   i:
     silent: true
     cmd: go install .
