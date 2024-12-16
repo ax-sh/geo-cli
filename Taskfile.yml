@@ -81,4 +81,7 @@ tasks:
       - task: changelog
       - task: bump-patch-version
       - task: tag-version
-#      - task: tag-and-push-new-version
+#      - task: push-new-version
+  i:
+    silent: true
+    cmd: go install .
