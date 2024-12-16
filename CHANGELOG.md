@@ -1,8 +1,15 @@
 
+## v1.1.4 [2024-12-16]
+
+### Chore
+- Rename push task and update commands ([7b37fbf](../../commit/7b37fbf6b4ffa93e372b72898e74d13fe6fd8f58))
+
+
 ## v1.1.3 [2024-12-16]
 
 ### Chore
 - Update version bumping message format ([ff8e2cd](../../commit/ff8e2cdc2de30b7c5776c3a5122e24b5c6067ee3))
+- Bump version to v1.1.3 ([bf312f7](../../commit/bf312f71fa591fca81db637daae83c68b8862830))
 
 
 ## v1.1.2 [2024-12-16]
