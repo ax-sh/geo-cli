@@ -74,6 +74,9 @@ tasks:
     cmds:
       - git push origin {{.BUMPED_VERSION}}
       - gh release create {{.BUMPED_VERSION}} --notes "{{.CL}}"
+  version:
+    silent: true
+    cmd: git cliff --bumped-version
   bump:
     silent: true
     cmds:
