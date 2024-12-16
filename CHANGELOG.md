@@ -1,8 +1,19 @@
 
+## v1.1.2 [2024-12-16]
+
+### Chore
+- Update bump version echo message ([4f42c2f](../../commit/4f42c2f9e2435a5fbc5ef42806e632ff65e91efe))
+- Add silent option to bump-patch-version ([a9fe349](../../commit/a9fe34946cf3f7e1b616d34784c08e9ad72a569b))
+
+
 ## v1.1.1 [2024-12-16]
 
 ### Style
 - Update color styles for table headers and rows ([acda9c7](../../commit/acda9c75772249a72b98b937b5efe97528b55760))
+
+
+### Chore
+- Bump version to v1.1.1 ([16be5ec](../../commit/16be5ecb96569bd45df66e2d15e808a3de45a735))
 
 
 ## v1.1.0 [2024-12-16]
