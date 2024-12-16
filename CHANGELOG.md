@@ -1,5 +1,5 @@
 
-## 0.1.0 [2024-12-16]
+## v1.0.0 [2024-12-16]
 
 ### Chore
 - Add .gitignore and Taskfile for build management ([2aabda2](../../commit/2aabda2241baa69dbc2bbd75ae261c6b36f100be))
@@ -9,6 +9,7 @@
 - Bump version to 0.1.0 ([3f39814](../../commit/3f398146b0afd1a1df4113b1afad12329f87b3f4))
 - Bump version to 0.1.0 ([e909f80](../../commit/e909f80da5153c94c06c3eab69f290c118a17cee))
 - Bump version to 0.1.0 ([07aa5b4](../../commit/07aa5b4657ddb0f8141e4a33c7e74e100fffca81))
+- Bump version to 0.1.0 ([680f30d](../../commit/680f30d0a6805a633e13bc4cec8b2bcd776842ac))
 
 
 ### Build
