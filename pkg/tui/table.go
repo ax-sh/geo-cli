@@ -1,13 +1,14 @@
 package tui
 
 import (
+	"geo/pkg/color"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/lipgloss/table"
 	"github.com/go-gota/gota/dataframe"
 )
 
 var (
-	HeaderStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#7CF143"))
+	HeaderStyle  = lipgloss.NewStyle().Foreground(color.PURPLE)
 	EvenRowStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#FC318A"))
 	OddRowStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#B13CC9"))
 )
