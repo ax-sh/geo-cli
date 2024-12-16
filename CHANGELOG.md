@@ -8,6 +8,7 @@
 - Bump version to 0.1.0 ([fb1f6d4](../../commit/fb1f6d4203bfc6b35fb71cb8493131304595b747))
 - Bump version to 0.1.0 ([3f39814](../../commit/3f398146b0afd1a1df4113b1afad12329f87b3f4))
 - Bump version to 0.1.0 ([e909f80](../../commit/e909f80da5153c94c06c3eab69f290c118a17cee))
+- Bump version to 0.1.0 ([07aa5b4](../../commit/07aa5b4657ddb0f8141e4a33c7e74e100fffca81))
 
 
 ### Build
