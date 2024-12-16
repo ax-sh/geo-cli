@@ -1,9 +1,16 @@
 
+## v1.1.3 [2024-12-16]
+
+### Chore
+- Update version bumping message format ([ff8e2cd](../../commit/ff8e2cdc2de30b7c5776c3a5122e24b5c6067ee3))
+
+
 ## v1.1.2 [2024-12-16]
 
 ### Chore
 - Update bump version echo message ([4f42c2f](../../commit/4f42c2f9e2435a5fbc5ef42806e632ff65e91efe))
 - Add silent option to bump-patch-version ([a9fe349](../../commit/a9fe34946cf3f7e1b616d34784c08e9ad72a569b))
+- Bump version to v1.1.2 ([bdd15c6](../../commit/bdd15c67a2d6131bb814530010bf4a9109cf7765))
 
 
 ## v1.1.1 [2024-12-16]
