@@ -2,9 +2,7 @@ package country
 
 import "github.com/go-gota/gota/dataframe"
 
-func MoveColumns(df dataframe.DataFrame) dataframe.DataFrame {
-	// Column to move
-	columnsToMove := []string{"Country", "Capital"}
+func MoveColumnsToStart(df dataframe.DataFrame, columnsToMove ...string) dataframe.DataFrame {
 	// Get all column names
 	columns := df.Names()
 
@@ -30,6 +28,9 @@ func MoveColumns(df dataframe.DataFrame) dataframe.DataFrame {
 }
 
 func NormalizeCountryDataFrame(df dataframe.DataFrame) dataframe.DataFrame {
-	fil := df.Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).Drop("Area(in sq km)")
-	return MoveColumns(fil)
+	fil := df.
+		Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).
+		Drop("Area(in sq km)").
+		Drop("Population")
+	return MoveColumnsToStart(fil, "tld", "Continent", "Country", "Capital", "CurrencyName", "CurrencyCode")
 }
