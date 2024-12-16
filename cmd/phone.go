@@ -13,7 +13,7 @@ var geoSubCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		callback := func(countryCode string) string {
 			if len(countryCode) == 0 {
-				return ""
+				return "Type to filter"
 			}
 			fil := country.FilterCountryByCountryCodeDataFrame(countryCode)
 			sel := fil.Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).Drop("Area(in sq km)")
