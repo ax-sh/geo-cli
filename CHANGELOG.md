@@ -1,8 +1,16 @@
 
+## v1.2.0 [2024-12-16]
+
+### Features
+- Add color package with styles and constants ([ee5b6ae](../../commit/ee5b6ae91e52fb2190241224a2cb020116a4a766))
+- Add PURPLE color for table header style ([15d1781](../../commit/15d1781b1d71373117d4a47ea408ccd476dacf66))
+
+
 ## v1.1.4 [2024-12-16]
 
 ### Chore
 - Rename push task and update commands ([7b37fbf](../../commit/7b37fbf6b4ffa93e372b72898e74d13fe6fd8f58))
+- Bump version to v1.1.4 ([9307d6b](../../commit/9307d6b5286af10edfc32fa09d4efd50caaaab9f))
 
 
 ## v1.1.3 [2024-12-16]
