@@ -75,7 +75,7 @@ tasks:
       - git push origin {{.BUMPED_VERSION}}
       - gh release create {{.BUMPED_VERSION}} --notes "{{.CL}}"
   bump:
-#    silent: true
+    silent: true
     cmds:
       - task: check-bumped-version
       - task: changelog
