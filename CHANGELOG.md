@@ -1,4 +1,10 @@
 
+## v1.4.1 [2024-12-18]
+
+### Chore
+- Bump version to v1.4.0 ([ae88fd4](../../commit/ae88fd45f8798993e762d80dc7f5c1e8657a6c8e))
+
+
 ## v1.4.0 [2024-12-18]
 
 ### Chore
