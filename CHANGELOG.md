@@ -1,6 +1,10 @@
 
 ## v1.4.0 [2024-12-18]
 
+### Chore
+- Bump version to v1.4.0 ([c5f027b](../../commit/c5f027b6c94cebfbb005b1207f7372f2bbfb1d79))
+
+
 ### Features
 - Add argument parsing for TLD command ([d8c9baa](../../commit/d8c9baaeb78b6a4fdee9659462a8701ae70bad1d))
 
