@@ -82,6 +82,7 @@ tasks:
     cmd: git cliff --bumped-version
   bump:
     silent: true
+    ignore_error: false
     cmds:
       - task: check-bumped-version
       - task: changelog
