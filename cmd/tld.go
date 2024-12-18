@@ -6,18 +6,25 @@ import (
 	"github.com/spf13/cobra"
 )
 
+func parseArgs(args []string) string {
+	var tld string
+	if len(args) == 0 {
+		println("Please specify tld code")
+		tld = "us"
+	} else {
+		tld = args[0]
+	}
+	return tld
+}
+
 // tldSubCmd represents the icon command
 var tldSubCmd = &cobra.Command{
 	Use:   "tld",
 	Short: "Filter country by phone country code",
 	Run: func(cmd *cobra.Command, args []string) {
-		tld := args[0]
-		if tld == "" {
-			println("Please specify tld code")
-			return
-		}
-		callback := func(tld string) string {
+		tld := parseArgs(args)
 
+		callback := func(tld string) string {
 			fil := country.FilterCountryByTLDDataFrame(tld)
 			sel := country.NormalizeCountryDataFrame(fil)
 			sel = sel.Drop([]string{"ISO", "ISO3", "ISO-Numeric", "geonameid"}).
