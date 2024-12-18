@@ -1,5 +1,15 @@
 
+## v1.4.0 [2024-12-18]
+
+### Features
+- Add argument parsing for TLD command ([d8c9baa](../../commit/d8c9baaeb78b6a4fdee9659462a8701ae70bad1d))
+
+
 ## v1.3.1 [2024-12-16]
+
+### Chore
+- Bump version to v1.3.1 ([0f8be58](../../commit/0f8be581ccedc4ee6afbca6b9fc44f7fd065f4cc))
+
 
 ### Refactor
 - Streamline DataFrame column management ([e2fbf9a](../../commit/e2fbf9ace42a4d29db4a4d73259d075028612e1d))
