@@ -1,8 +1,19 @@
 
+## v1.4.4 [2024-12-18]
+
+### Chore
+- Add ignore_error option to bump task ([afb1407](../../commit/afb14076a6d73f3e7cb969d3e1dbe65fa99ba590))
+
+
+### Documentation
+- Add initial README for geo-cli project ([b60b408](../../commit/b60b408ee138176b1dfc742cda6a19f7946b5fb4))
+
+
 ## v1.4.3 [2024-12-18]
 
 ### Chore
 - Bump version to v1.4.2 ([c42244f](../../commit/c42244f194eda4ccb8352f50b93e02845205d49a))
+- Bump version to v1.4.3 ([66f7532](../../commit/66f7532bdb5a71c1967e78aef936c62972a04a9a))
 
 
 ## v1.4.2 [2024-12-18]
