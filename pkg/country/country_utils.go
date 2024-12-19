@@ -26,11 +26,14 @@ func MoveColumnsToStart(df dataframe.DataFrame, columnsToMove ...string) datafra
 	df = df.Select(newOrder)
 	return df
 }
+func MoveImportantColumnsToStart(df dataframe.DataFrame) dataframe.DataFrame {
+	return MoveColumnsToStart(df, "tld", "Continent", "Country", "Capital", "CurrencyName", "CurrencyCode", "Phone")
+}
 
 func NormalizeCountryDataFrame(df dataframe.DataFrame) dataframe.DataFrame {
 	fil := df.
 		Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).
 		Drop("Area(in sq km)").
 		Drop("Population")
-	return MoveColumnsToStart(fil, "tld", "Continent", "Country", "Capital", "CurrencyName", "CurrencyCode")
+	return MoveImportantColumnsToStart(fil)
 }

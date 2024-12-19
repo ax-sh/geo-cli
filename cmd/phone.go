@@ -16,7 +16,10 @@ var geoSubCmd = &cobra.Command{
 				return "Type to filter"
 			}
 			fil := country.FilterCountryByCountryCodeDataFrame(countryCode)
-			sel := fil.Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).Drop("Area(in sq km)")
+			sel := fil.Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).
+				Drop("Area(in sq km)").
+				Drop("geonameid")
+			sel = country.MoveImportantColumnsToStart(sel)
 			result := tui.PrintDataframe(sel)
 			return result.String()
 		}
