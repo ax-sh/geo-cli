@@ -1,5 +1,15 @@
 
+## v1.6.1 [2024-12-21]
+
+### Build
+- Add git cliff command for version bumping ([5d77316](../../commit/5d77316ea7cee595110e4fdda6c42e9599135b87))
+
+
 ## v1.6.0 [2024-12-21]
+
+### Chore
+- Bump version to v1.6.0 ([10ff3b9](../../commit/10ff3b97b92133c1acae22235bbb24757400b747))
+
 
 ### Features
 - Add version command and version handling ([ee1d209](../../commit/ee1d209c1b2c204efbc9558d7f01e1b2093f3008))
