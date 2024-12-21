@@ -61,6 +61,7 @@ tasks:
     desc: Bumping version
     silent: true
     cmds:
+      - git cliff --bumped-version
       - echo [Bumping version to] [[{{.BUMPED_VERSION}}]]
       - git cliff -o CHANGELOG.md --bump
       - echo {{.BUMPED_VERSION}} > VERSION
