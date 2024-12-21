@@ -1,5 +1,15 @@
 
+## v1.6.0 [2024-12-21]
+
+### Features
+- Add version command and version handling ([ee1d209](../../commit/ee1d209c1b2c204efbc9558d7f01e1b2093f3008))
+
+
 ## v1.5.0 [2024-12-21]
+
+### Chore
+- Bump version to v1.5.0 ([9f7d269](../../commit/9f7d26961801c521a634d354ee01b1c816b3de63))
+
 
 ### Refactor
 - Streamline column handling in dataframes ([0fc4b39](../../commit/0fc4b39641ce53158c97c266ecc3ba92ce1e25ce))
