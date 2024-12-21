@@ -3,6 +3,7 @@
 
 ### Chore
 - Bump version to v1.7.1 ([d8df0c1](../../commit/d8df0c18b509f96d5f0d20e0dfa4ab9db3c3512d))
+- Bump version to v1.7.2 ([d2bf8ac](../../commit/d2bf8ac7b3d240b23df998aa18311c5053282f94))
 
 
 ## v1.7.1 [2024-12-21]
