@@ -30,9 +30,11 @@ func MoveImportantColumnsToStart(df dataframe.DataFrame) dataframe.DataFrame {
 	return MoveColumnsToStart(df, "tld", "Continent", "Country", "Capital", "CurrencyName", "CurrencyCode", "Phone")
 }
 
+func DropUselessCountryColumn(df dataframe.DataFrame) dataframe.DataFrame {
+	return df.Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format", "geonameid"})
+}
 func NormalizeCountryDataFrame(df dataframe.DataFrame) dataframe.DataFrame {
-	fil := df.
-		Drop([]string{"EquivalentFipsCode", "Postal Code Regex", "Postal Code Format"}).
+	fil := DropUselessCountryColumn(df).
 		Drop("Area(in sq km)").
 		Drop("Population")
 	return MoveImportantColumnsToStart(fil)
