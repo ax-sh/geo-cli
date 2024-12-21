@@ -1,5 +1,15 @@
 
+## v1.7.0 [2024-12-21]
+
+### Features
+- Set version dynamically for root command ([4ee392c](../../commit/4ee392c79755aa501ccc50dcbb2098f4c709ae67))
+
+
 ## v1.6.1 [2024-12-21]
+
+### Chore
+- Bump version to v1.6.1 ([530eaae](../../commit/530eaae36adaa5bb3bb55655e3933b72353a22ea))
+
 
 ### Build
 - Add git cliff command for version bumping ([5d77316](../../commit/5d77316ea7cee595110e4fdda6c42e9599135b87))
