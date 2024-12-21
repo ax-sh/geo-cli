@@ -9,7 +9,7 @@ import (
 var version string
 
 func main() {
-	cmd.Execute()
+	cmd.Execute(version)
 
 	//s := "gopher"
 	//fmt.Printf("Hello and welcome, %s! version [%s]\n", s, version)
