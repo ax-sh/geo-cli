@@ -1,4 +1,10 @@
 
+## v1.7.2 [2024-12-21]
+
+### Chore
+- Bump version to v1.7.1 ([d8df0c1](../../commit/d8df0c18b509f96d5f0d20e0dfa4ab9db3c3512d))
+
+
 ## v1.7.1 [2024-12-21]
 
 ### Chore
