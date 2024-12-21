@@ -1,6 +1,10 @@
 
 ## v1.7.0 [2024-12-21]
 
+### Chore
+- Bump version to v1.7.0 ([81bbcd6](../../commit/81bbcd63443c2fc787118cd19fac545348d35c14))
+
+
 ### Features
 - Set version dynamically for root command ([4ee392c](../../commit/4ee392c79755aa501ccc50dcbb2098f4c709ae67))
 
