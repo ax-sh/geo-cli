@@ -9,7 +9,7 @@ func versionSubCmd() *cobra.Command {
 		Use:     "version",
 		Aliases: []string{"ver", "v"},
 		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Println("[Version]", cmd.Version)
+			cmd.Println("[Version]", rootCmd.Version)
 		},
 	}
 	return cmd

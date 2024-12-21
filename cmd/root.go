@@ -7,6 +7,8 @@ import (
 
 func geoCmd() *cobra.Command {
 	cmd := &cobra.Command{
+		// Version field will be dynamically set
+		// Version: "",
 		Use: "geo",
 	}
 	return cmd
@@ -14,14 +16,13 @@ func geoCmd() *cobra.Command {
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = geoCmd()
-var version string
 
-func init() {
-	rootCmd.SetVersionTemplate("Version: {{.Version}}\n")
+// SetRootCmdVersion sets the version string for the root command.
+func SetRootCmdVersion(ver string) {
+	rootCmd.Version = ver
 }
 func Execute(v string) {
-	version = v
-	rootCmd.Version = version
+	SetRootCmdVersion(v)
 	err := rootCmd.Execute()
 
 	if err != nil {
