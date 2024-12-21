@@ -20,6 +20,7 @@ var geoSubCmd = &cobra.Command{
 				Drop("Area(in sq km)").
 				Drop("geonameid")
 			sel = country.MoveImportantColumnsToStart(sel)
+			sel = country.MoveColumnsToStart(sel, "Phone")
 			result := tui.PrintDataframe(sel)
 			return result.String()
 		}
