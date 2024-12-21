@@ -1,8 +1,20 @@
 
+## v1.5.0 [2024-12-21]
+
+### Refactor
+- Streamline column handling in dataframes ([0fc4b39](../../commit/0fc4b39641ce53158c97c266ecc3ba92ce1e25ce))
+- Simplify column dropping logic in country functions ([3778f5f](../../commit/3778f5ff3734abcfa4e2c3d310e8c4c5281b0f35))
+
+
+### Features
+- Move Phone column to start in output table ([8f027c5](../../commit/8f027c5174a748a85c649f9acc5d56ad23dcd1ab))
+
+
 ## v1.4.4 [2024-12-18]
 
 ### Chore
 - Add ignore_error option to bump task ([afb1407](../../commit/afb14076a6d73f3e7cb969d3e1dbe65fa99ba590))
+- Bump version to v1.4.4 ([bc0e349](../../commit/bc0e349b5c589f53b1a8f68fa4a24a1cf6a5213a))
 
 
 ### Documentation
