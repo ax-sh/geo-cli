@@ -3,6 +3,7 @@
 
 ### Chore
 - Bump version to v1.7.2 ([6d47fac](../../commit/6d47face0245ae70df691db134c80c3101fde2c1))
+- Bump version to v1.7.3 ([8252cbe](../../commit/8252cbe269f2238e8cb962bec7d45631dc9a5a70))
 
 
 ## v1.7.2 [2024-12-21]
@@ -139,52 +140,27 @@
 
 ## v1.1.4 [2024-12-16]
 
-### Chore
-- Rename push task and update commands ([7b37fbf](../../commit/7b37fbf6b4ffa93e372b72898e74d13fe6fd8f58))
-- Bump version to v1.1.4 ([9307d6b](../../commit/9307d6b5286af10edfc32fa09d4efd50caaaab9f))
-
-
-## v1.1.3 [2024-12-16]
-
-### Chore
-- Update version bumping message format ([ff8e2cd](../../commit/ff8e2cdc2de30b7c5776c3a5122e24b5c6067ee3))
-- Bump version to v1.1.3 ([bf312f7](../../commit/bf312f71fa591fca81db637daae83c68b8862830))
-
-
-## v1.1.2 [2024-12-16]
-
-### Chore
-- Update bump version echo message ([4f42c2f](../../commit/4f42c2f9e2435a5fbc5ef42806e632ff65e91efe))
-- Add silent option to bump-patch-version ([a9fe349](../../commit/a9fe34946cf3f7e1b616d34784c08e9ad72a569b))
-- Bump version to v1.1.2 ([bdd15c6](../../commit/bdd15c67a2d6131bb814530010bf4a9109cf7765))
-
-
-## v1.1.1 [2024-12-16]
-
 ### Style
 - Update color styles for table headers and rows ([acda9c7](../../commit/acda9c75772249a72b98b937b5efe97528b55760))
 
 
 ### Chore
-- Bump version to v1.1.1 ([16be5ec](../../commit/16be5ecb96569bd45df66e2d15e808a3de45a735))
-
-
-## v1.1.0 [2024-12-16]
-
-### Chore
+- Bump version to v1.0.0 ([2337e3d](../../commit/2337e3d425120a55051fe2ba4750394ef5e21305))
+- Bump version to v1.0.1 ([2c4d385](../../commit/2c4d3858072f471816ff12f811c355b92bcdc05a))
 - Update task configuration and add silent cmd ([2adedcd](../../commit/2adedcd9c36be470ac82ac53b1c5a61959af9fe3))
 - Bump version to v1.1.0 ([91ab289](../../commit/91ab2893b0b4923e617309facc0bd30ee9654def))
+- Bump version to v1.1.1 ([16be5ec](../../commit/16be5ecb96569bd45df66e2d15e808a3de45a735))
+- Update bump version echo message ([4f42c2f](../../commit/4f42c2f9e2435a5fbc5ef42806e632ff65e91efe))
+- Add silent option to bump-patch-version ([a9fe349](../../commit/a9fe34946cf3f7e1b616d34784c08e9ad72a569b))
+- Bump version to v1.1.2 ([bdd15c6](../../commit/bdd15c67a2d6131bb814530010bf4a9109cf7765))
+- Update version bumping message format ([ff8e2cd](../../commit/ff8e2cdc2de30b7c5776c3a5122e24b5c6067ee3))
+- Bump version to v1.1.3 ([bf312f7](../../commit/bf312f71fa591fca81db637daae83c68b8862830))
+- Rename push task and update commands ([7b37fbf](../../commit/7b37fbf6b4ffa93e372b72898e74d13fe6fd8f58))
+- Bump version to v1.1.4 ([9307d6b](../../commit/9307d6b5286af10edfc32fa09d4efd50caaaab9f))
 
 
 ### Features
 - Add silent version command for git cliff ([372364b](../../commit/372364bdd207ec20e8e082dc27cbeebd42d46d34))
-
-
-## v1.0.1 [2024-12-16]
-
-### Chore
-- Bump version to v1.0.0 ([2337e3d](../../commit/2337e3d425120a55051fe2ba4750394ef5e21305))
-- Bump version to v1.0.1 ([2c4d385](../../commit/2c4d3858072f471816ff12f811c355b92bcdc05a))
 
 
 ## v1.0.0 [2024-12-16]
