@@ -23,6 +23,7 @@ var tldSubCmd = &cobra.Command{
 	Short: "Filter country by phone country code",
 	Run: func(cmd *cobra.Command, args []string) {
 		tld := parseArgs(args)
+		println("Top level domain", tld)
 
 		callback := func(tld string) string {
 			fil := country.FilterCountryByTLDDataFrame(tld)
