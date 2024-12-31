@@ -28,8 +28,8 @@ var tldSubCmd = &cobra.Command{
 		callback := func(tld string) string {
 			fil := country.FilterCountryByTLDDataFrame(tld)
 			sel := country.NormalizeCountryDataFrame(fil)
-			sel = sel.Drop([]string{"ISO", "ISO3", "ISO-Numeric", "geonameid"}).
-				//Drop("neighbours").
+			sel = sel.Drop([]string{"ISO", "ISO3", "ISO-Numeric"}).
+				Drop("neighbours").
 				Drop("Languages")
 
 			result := tui.PrintDataframe(sel)
