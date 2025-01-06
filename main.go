@@ -2,14 +2,15 @@ package main
 
 import (
 	_ "embed"
-	"geo/cmd"
+	"geo/pkg/tui/ttt"
 )
 
 //go:embed VERSION
 var version string
 
 func main() {
-	cmd.Execute(version)
+	ttt.TTTMain()
+	//cmd.Execute(version)
 
 	//s := "gopher"
 	//fmt.Printf("Hello and welcome, %s! version [%s]\n", s, version)
