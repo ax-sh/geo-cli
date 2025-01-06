@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"geo/pkg/tui/command_list"
 	"github.com/spf13/cobra"
 	"os"
 )
@@ -24,6 +25,7 @@ func SetRootCmdVersion(ver string) {
 func Execute(v string) {
 	SetRootCmdVersion(v)
 	err := rootCmd.Execute()
+	command_list.FooMain()
 
 	if err != nil {
 		os.Exit(1)
