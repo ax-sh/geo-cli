@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"geo/pkg/country"
 	"geo/pkg/tui"
-	"log"
 	"os"
 
 	"github.com/charmbracelet/bubbles/list"
@@ -65,9 +64,13 @@ func FooMain() {
 		item{title: "phone", desc: "Find country by country code"},
 		item{title: "tld", desc: "Search by Top layer domain"},
 	}
+	l := list.New(items, list.NewDefaultDelegate(), 0, 0)
+	l.FilterInput.Focus()
+	l.SetFilteringEnabled(true)
+	l.SetShowFilter(true)
 
 	m := model{
-		list: list.New(items, list.NewDefaultDelegate(), 0, 0),
+		list: l,
 	}
 	m.list.Title = "Tools"
 
@@ -101,7 +104,7 @@ func FooMain() {
 			}
 			tui.FilterPhone(callback)
 		default:
-			log.Println("choice", finalModel.choice)
+			println("[You picked choice]", docStyle.Render(finalModel.choice))
 		}
 
 	}
