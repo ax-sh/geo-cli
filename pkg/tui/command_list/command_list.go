@@ -28,7 +28,7 @@ type model struct {
 }
 
 func (m model) Init() tea.Cmd {
-	return nil
+	return tea.Batch(m.list.StartSpinner())
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -72,7 +72,8 @@ func FooMain() {
 	m := model{
 		list: l,
 	}
-	m.list.Title = "Tools"
+	//m.list.Title = "Tools"
+	//m.list.SetShowTitle(true)
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
 
