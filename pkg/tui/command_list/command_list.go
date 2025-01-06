@@ -2,6 +2,8 @@ package command_list
 
 import (
 	"fmt"
+	"geo/pkg/country"
+	"geo/pkg/tui"
 	"log"
 	"os"
 
@@ -60,7 +62,7 @@ func (m model) View() string {
 
 func FooMain() {
 	items := []list.Item{
-		item{title: "Phone", desc: "Find country by country code"},
+		item{title: "phone", desc: "Find country by country code"},
 		item{title: "tld", desc: "Search by Top layer domain"},
 	}
 
@@ -84,6 +86,20 @@ func FooMain() {
 		switch finalModel.choice {
 		case "tld":
 			println("foodo")
+		case "phone":
+			callback := func(countryCode string) string {
+				if len(countryCode) == 0 {
+					return "Type to filter"
+				}
+				fil := country.FilterCountryByCountryCodeDataFrame(countryCode)
+				sel := country.DropUselessCountryColumn(fil).
+					Drop("Area(in sq km)")
+				sel = country.MoveImportantColumnsToStart(sel)
+				sel = country.MoveColumnsToStart(sel, "Phone")
+				result := tui.PrintDataframe(sel)
+				return result.String()
+			}
+			tui.FilterPhone(callback)
 		default:
 			log.Println("choice", finalModel.choice)
 		}
