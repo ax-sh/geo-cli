@@ -11,6 +11,9 @@ func geoCmd() *cobra.Command {
 		// Version field will be dynamically set
 		// Version: "",
 		Use: "geo",
+		Run: func(cmd *cobra.Command, args []string) {
+			command_list.FooMain()
+		},
 	}
 	return cmd
 }
@@ -25,7 +28,6 @@ func SetRootCmdVersion(ver string) {
 func Execute(v string) {
 	SetRootCmdVersion(v)
 	err := rootCmd.Execute()
-	command_list.FooMain()
 
 	if err != nil {
 		os.Exit(1)

@@ -37,7 +37,8 @@ tasks:
     silent: true
     cmds:
       - git cliff -u | glow
-
+  fmt:
+    cmd: go fmt ./...
 #___
   check-staged-changes:
     silent: true
