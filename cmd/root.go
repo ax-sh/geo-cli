@@ -12,7 +12,7 @@ func geoCmd() *cobra.Command {
 		// Version: "",
 		Use: "geo",
 		Run: func(cmd *cobra.Command, args []string) {
-			command_list.FooMain()
+			command_list.Run()
 		},
 	}
 	return cmd

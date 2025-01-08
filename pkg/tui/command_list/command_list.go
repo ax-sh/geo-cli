@@ -57,7 +57,7 @@ func (m model) View() string {
 	return styles.DocStyle.Render(m.list.View())
 }
 
-func FooMain() {
+func Run() {
 	items := []list.Item{
 		item{title: "phone", desc: "Find country by country code"},
 		item{title: "tld", desc: "Search by Top layer domain"},
