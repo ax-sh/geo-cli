@@ -2,8 +2,8 @@ package command_list
 
 import (
 	"fmt"
-	"geo/pkg/country"
-	"geo/pkg/tui"
+	"geo/pkg/tui/filter_phone"
+	"geo/pkg/tui/filter_tld"
 	"os"
 
 	"github.com/charmbracelet/bubbles/list"
@@ -65,9 +65,11 @@ func FooMain() {
 		item{title: "tld", desc: "Search by Top layer domain"},
 	}
 	l := list.New(items, list.NewDefaultDelegate(), 0, 0)
-	l.FilterInput.Focus()
+
 	l.SetFilteringEnabled(true)
 	l.SetShowFilter(true)
+	l.SetShowTitle(false)
+	l.FilterInput.Focus()
 
 	m := model{
 		list: l,
@@ -86,24 +88,12 @@ func FooMain() {
 	// Get the selected item from the final model
 
 	if finalModel, ok := finalModel.(model); ok {
-
 		switch finalModel.choice {
 		case "tld":
-			println("todo make this similar to phone")
+			filter_tld.FilterTldTui()
 		case "phone":
-			callback := func(countryCode string) string {
-				if len(countryCode) == 0 {
-					return "Type to filter"
-				}
-				fil := country.FilterCountryByCountryCodeDataFrame(countryCode)
-				sel := country.DropUselessCountryColumn(fil).
-					Drop("Area(in sq km)")
-				sel = country.MoveImportantColumnsToStart(sel)
-				sel = country.MoveColumnsToStart(sel, "Phone")
-				result := tui.PrintDataframe(sel)
-				return result.String()
-			}
-			tui.FilterPhone(callback)
+			filter_phone.FilterPhoneTui()
+			break
 		default:
 			println("[You picked choice]", docStyle.Render(finalModel.choice))
 		}

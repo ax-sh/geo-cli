@@ -21,12 +21,9 @@ func geoCmd() *cobra.Command {
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = geoCmd()
 
-// SetRootCmdVersion sets the version string for the root command.
-func SetRootCmdVersion(ver string) {
+func Execute(ver string) {
+	// sets the version string for the root command.
 	rootCmd.Version = ver
-}
-func Execute(v string) {
-	SetRootCmdVersion(v)
 	err := rootCmd.Execute()
 
 	if err != nil {
