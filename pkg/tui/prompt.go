@@ -2,15 +2,12 @@ package tui
 
 import (
 	"geo/pkg/color"
+	"geo/pkg/styles"
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"log"
 )
-
-var baseStyle = lipgloss.NewStyle().
-	BorderStyle(lipgloss.NormalBorder()).
-	BorderForeground(color.GRAY)
 
 type (
 	errMsg error
@@ -42,7 +39,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-
 		switch msg.Type {
 		case tea.KeyEnter, tea.KeyCtrlC, tea.KeyEsc:
 			return m, tea.Quit
@@ -65,7 +61,7 @@ func (m model) View() string {
 	helpText := "Type to filter | q/ctrl+c to quit"
 	label := "Enter country code for country?"
 	return lipgloss.JoinVertical(lipgloss.Left,
-		baseStyle.Render(label),
+		styles.BaseStyle.Render(label),
 		input,
 		color.YellowColorText.Render(helpText),
 		tableString,

@@ -2,16 +2,14 @@ package command_list
 
 import (
 	"fmt"
+	"geo/pkg/styles"
 	"geo/pkg/tui/filter_phone"
 	"geo/pkg/tui/filter_tld"
 	"os"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
 )
-
-var docStyle = lipgloss.NewStyle().Margin(1, 2)
 
 type item struct {
 	title, desc string
@@ -46,7 +44,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, tea.Quit
 		}
 	case tea.WindowSizeMsg:
-		h, v := docStyle.GetFrameSize()
+		h, v := styles.DocStyle.GetFrameSize()
 		m.list.SetSize(msg.Width-h, msg.Height-v)
 	}
 
@@ -56,7 +54,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	return docStyle.Render(m.list.View())
+	return styles.DocStyle.Render(m.list.View())
 }
 
 func FooMain() {
@@ -91,11 +89,12 @@ func FooMain() {
 		switch finalModel.choice {
 		case "tld":
 			filter_tld.FilterTldTui()
+			break
 		case "phone":
 			filter_phone.FilterPhoneTui()
 			break
 		default:
-			println("[You picked choice]", docStyle.Render(finalModel.choice))
+			println("[You picked choice]", styles.DocStyle.Render(finalModel.choice))
 		}
 
 	}
