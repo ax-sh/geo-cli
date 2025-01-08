@@ -89,7 +89,7 @@ func FooMain() {
 
 		switch finalModel.choice {
 		case "tld":
-			println("foodo")
+			println("todo make this similar to phone")
 		case "phone":
 			callback := func(countryCode string) string {
 				if len(countryCode) == 0 {
