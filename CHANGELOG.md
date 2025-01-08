@@ -1,8 +1,31 @@
 
+## v1.8.0 [2025-01-08]
+
+### Style
+- Update print statement wording ([ec48942](../../commit/ec48942b84d7331c5040037e87cfac16d7d918bb))
+
+
+### Refactor
+- Simplify column drops in command logic ([e8b23a9](../../commit/e8b23a90796bb35ee30f65587bd7d57d830837d5))
+- Clean up imports and improve list initialization ([d5558d3](../../commit/d5558d3a7a097264b7fa06ae16611fa9280c6918))
+- Update main function command execution ([d367478](../../commit/d367478e7860343671f65b92d88073872424aa0e))
+- Simplify command execution and filtering logic ([ea3564e](../../commit/ea3564ebdb9bb56c0359c0d4026e2264436bd5aa))
+
+
+### Features
+- Add print statement for top level domain ([99d9b80](../../commit/99d9b8034abe8c078ece3adffcd1f2336e509051))
+- Add command list functionality to TUI ([878a505](../../commit/878a50579e173eabb79593a0d4255b238d7ddc4b))
+- Add choice handling in model logic ([571475d](../../commit/571475db786d46cd7740feb73b8270b93356327e))
+- Add phone filter functionality ([ade0df1](../../commit/ade0df1c1f798514b4d68bca5169488ea8678b33))
+- Add spinner initialization in command list model ([68afe61](../../commit/68afe613b58b4255e08acacea3fcf03d76b93410))
+- Add fmt task in Taskfile and refactor main execution ([720053f](../../commit/720053fac54af61f100b8388912bcf52f5f81248))
+
+
 ## v1.7.4 [2024-12-24]
 
 ### Chore
 - Bump version to v1.7.3 ([e14b2cf](../../commit/e14b2cfeb9d6c6d04a83905a0973d523607e257b))
+- Bump version to v1.7.4 ([7112210](../../commit/71122102a729912e3b155ac6ea066dd4e27d33e3))
 
 
 ## v1.7.3 [2024-12-21]
